@@ -1,10 +1,11 @@
 const div = document.querySelector('.main');
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('.btn')
 const uScore = document.querySelector('.uscore');
 const cScore = document.querySelector('.cscore');
-const result = document.querySelector('.result h1');
-const resultL = document.querySelector('.result .lose')
-const roundResult = document.querySelector('.roundResult')
+const textWin = document.querySelector('.result h1');
+const textLose = document.querySelector('.result .lose');
+const roundResult = document.querySelector('.roundResult');
+const replayButton = document.querySelector('.btn-replay');
 
 let userScore = 0;
 let computerScore = 0; 
@@ -37,7 +38,7 @@ else if((playerSelection === 'scissors' && computerSelection === 'rock') ||
 uScore.innerText = userScore;
 cScore.innerText = computerScore;
 game()
-// e.target.disabled
+
 }));
 
 function computerPlay(){
@@ -51,48 +52,27 @@ function computerPlay(){
     }
 }
 
+function replay(){
+        document.body.classList.add('open')
+             
+}
+
 function game(){
     if(userScore === 5){
-        result.innerText = 'You win! Congratulations!'
-        
+        textWin.innerText = 'You win! Congratulations!'
+        setTimeout(replay, 2000);
     }else if(computerScore === 5){
-        resultL.innerText = 'Game Over! You lost!'  
-    }   
+        textLose.innerText = 'Game Over! You lost!' 
+        setTimeout(replay, 2000);
+    }
+    
     };   
     
+
+
+replayButton.addEventListener('click', function(e){
+    document.querySelector('.layout').style.display = 'none'
+    location.reload()
     
-// function disableButtons(){
-//     buttons.target.disabled = true
-// }
-
-//  function playRound(){
-    
-//     if (playerSelection === 'rock' && computerSelection === 'rock'){
-//         return "Draw!"
-//     }else if (playerSelection === 'paper' && computerSelection === 'paper'){
-//         return "Draw!"
-//     }else if (playerSelection === 'scissors' && computerSelection === 'scissors'){
-//         return "Draw!"
-//     }else if (playerSelection === 'rock' && computerSelection === 'scissors'){
-//         console.log("You win")
-//         userScore++;
-//     }else if (playerSelection === 'scissors' && computerSelection === 'rock'){
-//         console.log("You lost")
-//         computerScore++;
-//     }else if (playerSelection === 'rock' && computerSelection === 'paper'){
-//         console.log("You lost")
-//         computerScore++;
-//     }else if (playerSelection === 'paper' && computerSelection === 'rock'){
-//         console.log("You win")
-//         userScore++;
-//     }else if (playerSelection === 'paper' && computerSelection === 'scissors'){
-//         console.log("You lost")
-//         computerScore++;
-//     }else if(playerSelection === 'scissors' && computerSelection === 'paper'){
-//         console.log("You win")
-//         userScore++;
-//     }
-// }
-
-
+})
 
