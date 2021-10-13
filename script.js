@@ -15,25 +15,29 @@ let computerSelection = ''
 buttons.forEach(button => button.addEventListener('click', function(e){
    playerSelection = e.target.value;
    computerSelection = computerPlay();
-   if ((playerSelection === 'rock' && computerSelection === 'rock') ||
-        (playerSelection === 'paper' && computerSelection === 'paper') ||
-        (playerSelection === 'scissors' && computerSelection === 'scissors')){
+   if (playerSelection === computerSelection){
     roundResult.innerText = 'Draw!'
+
 }else if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') || 
         (playerSelection === 'scissors' && computerSelection === 'paper')){
+
     roundResult.innerText = `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)}!`;
     userScore++;
-}else if((playerSelection === 'scissors' && computerSelection === 'rock') || 
+        }
+else if((playerSelection === 'scissors' && computerSelection === 'rock') || 
         (playerSelection === 'rock' && computerSelection === 'paper') ||
         (playerSelection === 'paper' && computerSelection === 'scissors')){
+
     roundResult.innerText = `You lost! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}!`
     computerScore++;
-}
+    
+    }
+
 uScore.innerText = userScore;
 cScore.innerText = computerScore;
 game()
-e.target.disabled
+// e.target.disabled
 }));
 
 function computerPlay(){
@@ -47,23 +51,19 @@ function computerPlay(){
     }
 }
 
-
 function game(){
     if(userScore === 5){
         result.innerText = 'You win! Congratulations!'
         
     }else if(computerScore === 5){
-        resultL.innerText = 'Game Over! You lost!'
-        
-        
-    }
-        
+        resultL.innerText = 'Game Over! You lost!'  
     }   
+    };   
     
     
-function disableButtons(){
-    buttons.target.disabled = true
-}
+// function disableButtons(){
+//     buttons.target.disabled = true
+// }
 
 //  function playRound(){
     
